@@ -1,0 +1,44 @@
+
+.goods-item {
+  /* padding: 20rpx; */
+  text-align: center;
+  color: #333;
+  padding-bottom: 85rpx;
+}
+
+.goods-image {
+  width: 100%;
+  border-radius: 10rpx;
+}
+
+.goods-info {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 5rpx;
+}
+
+.goods-title {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 28rpx;
+}
+
+.goods-num {
+  /* text-align: center; */
+  font-size: 26rpx;
+}
+
+.goods-price {
+  color: #ff5777;
+
+}
+
+.favor-icon {
+  width: 30rpx;
+  height: 30rpx;
+  padding: 0 6rpx 0 10rpx;
+  position: relative;
+  top: 4rpx;
+}

@@ -1,19 +1,11 @@
-<!--pages/home/home.wxml-->
+<!-- pages/home/home.wxml -->
 <!-- 轮播组件区域 -->
 <w-swiper list="{{banners}}" />
-
 <!-- 推荐区域 -->
 <w-recommend recommends="{{recommends}}" />
-
 <!-- 本周流行 -->
 <w-popular />
-
 <!-- tabcontrol栏区域 -->
-<w-tab-control titles="{{titles}}" bind:tabclick="handleTabClick"/>
-
+<w-tab-control titles="{{titles}}" bind:tabclick="handleTabClick" />
 <!-- 商品展示区域 -->
-<view class="goods">
-  <block wx:for="{{goods[currentType].list}}" wx:key="index">
-    <view>{{item.title}}</view>
-  </block>
-</view>
+<w-goods goods="{{goods[currentType].list}}" />
