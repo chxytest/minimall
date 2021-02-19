@@ -1,6 +1,7 @@
-import {getMultidata, getGoodsData} from '../../service/home'
+import { getMultidata, getGoodsData } from '../../service/home'
 
 const type = ['pop', 'new', 'sell']
+const TOP_DISTANCE = 1000
 // pages/home/home.js
 Page({
 
@@ -12,11 +13,12 @@ Page({
     recommends: [],
     titles: ['流行', '新款', '精选'],
     goods: {
-      pop: {page: 0, list: []},
-      new: {page: 0, list: []},
-      sell: {page: 0, list: []}
+      pop: { page: 0, list: [] },
+      new: { page: 0, list: [] },
+      sell: { page: 0, list: [] }
     },
-    currentType: "pop"
+    currentType: "pop",
+    showBackTop: false
   },
 
   /**
@@ -31,7 +33,7 @@ Page({
     this._getGoodsData('sell')
   },
   //---------------------数据请求---------------------------------
-  _getMultidata(){
+  _getMultidata() {
     getMultidata().then(res => {
       console.log(res)
       const banners = res.data.data.banner.list
@@ -43,7 +45,7 @@ Page({
       })
     })
   },
-  _getGoodsData(type){
+  _getGoodsData(type) {
     // 1. 获取页面代码
     const page = this.data.goods[type].page + 1
 
@@ -80,46 +82,26 @@ Page({
     })
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
+  onPageScroll(options) {
+    // 1. 取出scrollTop
+    const scrollTop = options.scrollTop
 
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
+    // 2. 修改showBackTop 属性
+    const flag = scrollTop >= TOP_DISTANCE
+    if (flag != this.data.showBackTop) {
+      this.setData({
+        showBackTop: flag
+      })
+    }
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    console.log("滚动到底部")
+    // 上拉加载更多
+    this._getGoodsData(this.data.currentType)
   },
 
   /**
