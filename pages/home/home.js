@@ -18,7 +18,9 @@ Page({
       sell: { page: 0, list: [] }
     },
     currentType: "pop",
-    showBackTop: false
+    showBackTop: false,
+    isTabFixed: false,
+    tabScrollTop: 0
   },
 
   /**
@@ -51,7 +53,7 @@ Page({
 
     // 2.请求商品数据
     getGoodsData(type, page).then(res => {
-      console.log(res)
+      // console.log(res)
       // 2.1 取出数据
       const list = res.data.data.list
 
@@ -82,6 +84,9 @@ Page({
     })
   },
 
+  /**
+   * 页面滚动触发事件的处理函数
+  */
   onPageScroll(options) {
     // 1. 取出scrollTop
     const scrollTop = options.scrollTop
@@ -93,6 +98,14 @@ Page({
         showBackTop: flag
       })
     }
+
+    // 3. 修改 isTabFixed 属性
+    const flagTab = scrollTop >= this.data.tabScrollTop
+    if (flagTab != this.data.isTabFixed) {
+      this.setData({
+        isTabFixed: flagTab
+      })
+    }
   },
 
   /**
@@ -102,6 +115,14 @@ Page({
     console.log("滚动到底部")
     // 上拉加载更多
     this._getGoodsData(this.data.currentType)
+  },
+
+  // 图片加载完成处理方法
+  handleImageLoad() {
+    wx.createSelectorQuery().select('#tab-control').boundingClientRect(rect => {
+      console.log(rect);
+      this.data.tabScrollTop = rect.top
+    }).exec()
   },
 
   /**
