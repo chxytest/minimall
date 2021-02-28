@@ -10,4 +10,4 @@
 <!-- 商品展示区域 -->
 <w-goods goods="{{goods[currentType].list}}" />
 <!-- 回到顶部 -->
-<w-back-top wx:if="{{showBackTop}}" />
+<w-back-top wx:if="{{showBackTop}}" />  
