@@ -1,1 +1,20 @@
 /* pages/category/category.wxss */
+.goods-menus-scroll {
+  height: 100vh;
+  width: 200rpx;
+}
+
+.goods-item {
+  background: #eee;
+  font-size: 28rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+  text-align: center;
+}
+
+.active {
+  font-weight: 700;
+  color: #ff5777;
+  background: #fff;
+  border-left: 4rpx solid #ff5777;
+}

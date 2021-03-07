@@ -1,3 +1,5 @@
+import { getCategory } from '../../service/category'
+
 // pages/category/category.js
 Page({
 
@@ -5,14 +7,34 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    menuList: [],
+    currentIndex: 0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this._getCategory()
+  },
 
+  // 获取商品分类菜单数据
+  _getCategory() {
+    getCategory().then(res => {
+      console.log(res);
+      const menu = res.data.data.category.list
+      this.setData({
+        menuList: menu
+      })
+    })
+  },
+
+  // 点击商品分类菜单
+  menuClick(e) {
+    console.log(e);
+    this.setData({
+      currentIndex: e.currentTarget.dataset.index
+    })
   },
 
   /**

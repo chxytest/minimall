@@ -7,5 +7,5 @@
     "w-recommend": "./childComponents/w-recommend/w-recommend",
     "w-popular": "./childComponents/w-popular/w-popular"
   },
-  "navigationBarTitleText": "购物街"
+  "navigationBarTitleText": "首页"
 }

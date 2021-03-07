@@ -1,2 +1,10 @@
-<!--pages/category/category.wxml-->
-<text>pages/category/category.wxml</text>
+<!-- 商品菜单列表 -->
+<view>
+  <scroll-view class="goods-menus-scroll" scroll-y="true" upper-threshold="50" lower-threshold="50" enhanced="true" bounces="true">
+    <block wx:for="{{menuList}}" wx:key="index">
+      <view class="goods-item {{index == currentIndex ? 'active' : ''}}" data-index="{{index}}" bind:tap="menuClick">
+        {{item.title}}
+      </view>
+    </block>
+  </scroll-view>
+</view>

@@ -1,2 +1,5 @@
-<!--pages/profile/profile.wxml-->
+<!-- pages/profile/profile.wxml -->
 <text>pages/profile/profile.wxml</text>
+<!-- 分享按钮 -->
+<view>----------分享-------------</view>
+<button size="mini" open-type="share">分享我的</button>

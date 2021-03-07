@@ -4,7 +4,7 @@
     <view class="goods-title">{{item.title}}</view>
     <view class="goods-num">
       <text class="goods-price">{{item.price}}</text>
-      <image class="favor-icon" src="/assets/common/favor.png" />
+      <image class="favor-icon" src="/assets/common/favor.png" lazy-load="{{true}}" />
       <text class="goods-cfav">{{item.cfav}}</text>
     </view>
   </view>
